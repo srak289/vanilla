@@ -1,0 +1,57 @@
+= Vanilla
+
+.BaseOS
+Debian12 with no tasksel options
+
+.Packages
+* chrony / systemd-timecyncd # chrony is a good server or client, timesyncd is client-only
+* sudo
+* git
+* neovim
+* rsync
+* bind9-dnsutils - dig
+* net-tools - arp
+* tcpdump
+* openssh-client
+* tree
+* wget
+* curl
+* strace
+
+
+
+
+.Libvirt Host
+* qemu-kvm
+* libvirt-clients
+* libvirt-daemon-system
+* bridge-utils
+* libguestfs-tools
+* genisoimage
+* virtinst
+* libosinfo-bin
+
+.Headless
+* openssh-server
+
+.Graphical
+* kde-plasma-desktop - minimal 
+* zathura
+* okular
+* chromium
+* virt-manager
+
+.Optional Packages
+* pcscd
+* pcsc-tools
+
+.Post-Install
+* Remove extra junk from kde-plasma-desktop
+** discover + deps
+** dolphin + deps
+* Install our dotfiles
+* Create /etc/sudoers.d/$USER entry
+* groups
+** sudo
+** libvirt
+** libvirt-qemu
