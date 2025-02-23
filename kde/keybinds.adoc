@@ -1,0 +1,4 @@
+Ctrl+Shift+PgUp = VolumeUp
+Ctrl+Shift+PgDn = VolumeDn
+Ctrl+Shift+Home = VolMuteToggle
+Ctrl+Shift+End = MicMuteToggle

@@ -20,6 +20,11 @@ vim.keymap.set("n", "<leader>j", ":bw<CR>")
 vim.keymap.set("n", "<leader>l", ":bn<CR>")
 vim.keymap.set("n", "<leader>k", ":ls<CR>")
 
+vim.keymap.set("n", "<leader>w", ":w<CR>")
+vim.keymap.set("n", "<leader>W", ":wqa<CR>")
+vim.keymap.set("n", "<leader>q", ":q!<CR>")
+vim.keymap.set("n", "<leader>Q", ":qa!<CR>")
+
 -- 'dir' commands
 -- dir-list
 vim.keymap.set("n", "<leader>dl", ":!ls<CR>")

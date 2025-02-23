@@ -1,9 +1,13 @@
 #!/bin/sh
 
+# dirs
 CONFIG=${HOME}/.config
 LOCALBIN=${HOME}/.local/bin
-BASHALIAS=${HOME}/.bash_alias.d
-BASHCONFIG=${HOME}/.bash_config.d
+
+# files
+BASHRC=${HOME}/.bashrc
+BASHALIAS=${HOME}/.bash_alias
+BASHFUNCTION=${HOME}/.bash_functions
 
 # for dir in dirs mkdir -p
 #
@@ -13,3 +17,8 @@ BASHCONFIG=${HOME}/.bash_config.d
 #
 
 rm .bash_profile
+
+function mklinks() {
+    ln -s ${PWD}/nvim ${CONFIG}/nvim
+    ln -s ${PWD}/nvim ${CONFIG}/nvim
+}
