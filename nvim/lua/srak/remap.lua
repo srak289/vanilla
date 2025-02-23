@@ -33,8 +33,10 @@ vim.keymap.set("n", "<leader>dm", function()
 end
 )
 
-vim.keymap.set("n", "<leader>dm", function()
-  print("todo")
+-- toggle nu/rnu
+vim.keymap.set("n", "<leader>sn", function()
+  vim.wo.nu = not vim.wo.nu
+  vim.wo.rnu = not vim.wo.rnu
 end
 )
 
