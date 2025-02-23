@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function newproj() {
+    if [ ! -d $1 ]; then
+        mkdir $1
+    fi
+    cd $1
+    git init
+    python3 -m venv --prompt $1 .env
+}
+

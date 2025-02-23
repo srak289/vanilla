@@ -1,0 +1,3 @@
+Capture kde settings for setup
+
+Package removal

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -f /etc/profile ];
+    source /etc/profile
+fi
+if [ -f ${HOME}/.bashrc ];
+    source ${HOME}/.bashrc
+fi

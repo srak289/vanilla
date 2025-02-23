@@ -1,3 +1,6 @@
 # This is to get around firefox showing the menu constantly when you Alt+Drag
 Try to set ui.key.menuAccessKey = 17 on the about:config page.
 This makes the menu bar work with Ctrl+Shift.
+
+# vimium FF extension
+# multi-containers extension
