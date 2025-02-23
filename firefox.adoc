@@ -4,3 +4,6 @@ This makes the menu bar work with Ctrl+Shift.
 
 # vimium FF extension
 # multi-containers extension
+# ublock origin or similar ad blocker
+# Cac Auth setup -> Certs
+# Darkreader or similar
