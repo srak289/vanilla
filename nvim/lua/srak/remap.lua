@@ -1,5 +1,4 @@
 -- set options
-
 vim.opt.ai = true
 vim.opt.aw = true
 vim.opt.rnu = true
@@ -25,11 +24,17 @@ vim.keymap.set("n", "<leader>W", ":wqa<CR>")
 vim.keymap.set("n", "<leader>q", ":q!<CR>")
 vim.keymap.set("n", "<leader>Q", ":qa!<CR>")
 
+vim.keymap.set("n", "<leader>b", function()
+    print("TODO read integer for buffer")
+end
+)
+
 -- 'dir' commands
 -- dir-list
 vim.keymap.set("n", "<leader>dl", ":!ls<CR>")
+vim.keymap.set("n", "<leader>dt", ":!tree --gitignore<CR>")
 vim.keymap.set("n", "<leader>dm", function()
-  print("todo")
+  print("TODO read name for mkdir")
 end
 )
 
@@ -41,3 +46,5 @@ end
 )
 
 -- todo need treesitter to change lua indent to 2space
+
+vim.keymap.set("n", "<leader><leader>", ":so<CR>")

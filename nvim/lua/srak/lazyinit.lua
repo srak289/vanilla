@@ -2,7 +2,14 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  local out = vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--branch=stable",
+    lazyrepo,
+    lazypath
+  })
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
@@ -25,38 +32,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  {
-    "nvim-lua/plenary.nvim",
-    lazy = false,
-    config = function(_, opts)
-    end
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    lazy = false,
-    config = function(_, opts)
-    end
-  },
-  {
-    "nvim-treesitter/nvim-treesitter.nvim",
-    lazy = false,
-    config = function(_, opts)
-    end
-  },
-  -- TODO why does plugin manager want github login
-  --"nvim-neo-tree/neotree.nvim",
-  {
-    'maxmx03/solarized.nvim',
-    lazy = false,
-    priority = 1000,
-    ---@type solarized.config
-    opts = {},
-    config = function(_, opts)
-      vim.o.termguicolors = true
-      vim.o.background = 'light'
-      require('solarized').setup(opts)
-      vim.cmd.colorscheme 'solarized'
-    end,
-  },
+  spec = "srak.lazy",
+  install = { colorscheme = { "solarized" } },
   checker = { enabled = false },
 })

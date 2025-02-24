@@ -1,2 +1,2 @@
 require("srak.remap")
-require("srak.lazy")
+require("srak.lazyinit")
