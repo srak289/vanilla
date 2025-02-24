@@ -1,11 +1,22 @@
 #!/bin/bash
 
-function newproj() {
+function srak::argparse() {
+
+}
+
+function srak::newproj() {
+    declare -i PIP
+    if [ "$1" == "--nopip" ]; then
+        PIP=0
+        shift
+    fi
     if [ ! -d $1 ]; then
         mkdir $1
     fi
     cd $1
     git init
-    python3 -m venv --prompt $1 .env
+    if [ $PIP -eq 1 ]; then
+        python3 -m venv --prompt $1 .env
+    fi
 }
 

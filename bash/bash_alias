@@ -10,3 +10,6 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+
+# our functions
+alias np="srak::new_project"
