@@ -3,6 +3,8 @@
 if [ -f /etc/profile ];
     source /etc/profile
 fi
-if [ -f ${HOME}/.bashrc ];
-    source ${HOME}/.bashrc
+if [ -z ${_VANILLA_SOURCED:-} ] then
+    if [ -f ${HOME}/.bashrc ];
+        source ${HOME}/.bashrc
+    fi
 fi

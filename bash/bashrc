@@ -52,22 +52,26 @@ fi
 
 # TODO do setup logic for this agent?
 # if we can tell we SSHd to the machine we shouldn't start an agent
-export SSH_AUTH_SOCK=/run/user/${UID}/openssh_agent
-if [ ! -S ${SSH_AUTH_SOCK} ]; then
-  eval `ssh-agent -D -a ${SSH_AUTH_SOCK}`
-fi
+# export SSH_AUTH_SOCK=/run/user/${UID}/openssh_agent
+# if [ ! -S ${SSH_AUTH_SOCK} ]; then
+#   eval `ssh-agent -D -a ${SSH_AUTH_SOCK}`
+# fi
 
 export HISTCONTROL=ignoreboth
 #export HISTIGNORE='fg:cd*:ls*:tomb*'
-export PATH=${HOME}.local/bin:$PATH
+export PATH=${HOME}/.local/bin:${PATH}
 
 export EDITOR=nvim
 
-if [ -f ${HOME}/.bash_aliases ]; then
-    source ${HOME}/.bash_aliases
+if [ -f ${HOME}/.bash_alias ]; then
+    source ${HOME}/.bash_alias
 fi
 if [ -f ${HOME}/.bash_functions ]; then
     source ${HOME}/.bash_functions
 fi
 
-left
+if [ -x left ]; then
+    left
+fi
+
+declare -x _VANILLA_SOURCED=true
