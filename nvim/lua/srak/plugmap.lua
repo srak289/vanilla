@@ -1,17 +1,24 @@
 -- Harpoon Commands
-local h = require("harpoon")
-h.ui = require("harpoon.ui")
-h.mark = require("harpoon.mark")
+local harpoon = require("harpoon")
+harpoon:setup()
 
+harpoon.ui = require("harpoon.ui")
+harpoon.mark = require("harpoon.mark")
+
+-- remove <leader>_h_ : causes delay for <leader>h :bp
 vim.keymap.set("n", "<leader>hk", function()
-  h.ui.toggle_quick_menu()
+  harpoon.ui.toggle_quick_menu()
 end
 )
 vim.keymap.set("n", "<leader>hh", function()
-  h.ui.nav_prev()
+  harpoon.ui.nav_prev()
 end
 )
 vim.keymap.set("n", "<leader>hl", function()
-  h.ui.nav_next()
+  harpoon.ui.nav_next()
 end
 )
+
+-- Telescope Commands
+local telescope = require("telescope")
+telescope:setup()
