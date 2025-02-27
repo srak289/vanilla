@@ -21,3 +21,9 @@ function srak::newproj() {
     fi
 }
 
+function srak::setup_agent() {
+    if [ -s /run/user/${UID}/keyring/ssh ]; then
+        # ubuntu
+        export SSH_AUTH_SOCK=/run/user/${UID}/keyring/ssh
+    fi
+}

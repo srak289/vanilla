@@ -8,3 +8,4 @@ if [ -z ${_VANILLA_SOURCED:-} ]; then
         source ${HOME}/.bashrc
     fi
 fi
+. "$HOME/.cargo/env"

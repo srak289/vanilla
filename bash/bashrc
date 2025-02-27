@@ -44,9 +44,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
 fi
 
@@ -56,6 +56,8 @@ fi
 # if [ ! -S ${SSH_AUTH_SOCK} ]; then
 #   eval `ssh-agent -D -a ${SSH_AUTH_SOCK}`
 # fi
+
+# env setup
 
 export HISTCONTROL=ignoreboth
 #export HISTIGNORE='fg:cd*:ls*:tomb*'
@@ -70,8 +72,20 @@ if [ -f ${HOME}/.bash_functions ]; then
     source ${HOME}/.bash_functions
 fi
 
+# post source
+
 if [ -x left ]; then
     left
 fi
 
 declare -x _VANILLA_SOURCED=true
+
+if [ -z ${SSH_AUTH_SOCK:-} ]; then
+    if [ -z ${SSH_CONNECTION:-} ]; then
+        srak::setup_agent
+    fi
+fi
+
+if [ -f ${HOME}/.cargo/env ]; then
+    source "${HOME}/.cargo/env"
+fi
