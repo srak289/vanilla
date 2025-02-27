@@ -7,7 +7,7 @@ if [ -f ${HOME}/.local/bin/nvim ]; then
     exit 1
 fi
 
-if [ ! -x wget ]; then
+if [ ! -x $(which wget) ]; then
     echo "Please install 'wget'"
     exit 1
 fi
@@ -18,5 +18,5 @@ if [ ! -d ${HOME}/.local ]; then
     mkdir ${HOME}/.local
 fi
 
-tar -xf nvim-linux-x86_64.tar.gz --xform "s/nvim-linux-x86_64.tar.gz/${HOME}/.local"
+tar -xf nvim-linux-x86_64.tar.gz --xform "s/nvim-linux-x86_64/.local/"
 rm nvim-linux-x86_64.tar.gz
