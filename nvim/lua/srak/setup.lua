@@ -49,3 +49,4 @@ end
 -- todo need treesitter to change lua indent to 2space
 
 vim.keymap.set("n", "<leader><leader>", ":so<CR>")
+--function like leader>m > manpage

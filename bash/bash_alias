@@ -4,12 +4,27 @@ alias vi='nvim'
 alias vim='nvim'
 alias venv='source .env/bin/activate'
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+if [ $(which rg) ]; then
+    alias grep='rg'
+else
+    alias grep='grep --color=auto'
+fi
 
-alias ll='ls -l'
-alias la='ls -A'
 alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -l'
 
+alias f='fg'
+
+alias g='git'
+alias gc='git -C'
+
+alias h='man'
+alias i='invoke'
 
 # our functions
 alias np="srak::new_project"
+
+alias m='make'
+
+alias p='python3'

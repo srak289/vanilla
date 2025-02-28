@@ -1,8 +1,7 @@
 -- Harpoon Commands
-local harpoon = require("harpoon")
-
 -- debugging
-vim.g.harpon_log_level = "trace"
+vim.g.harpoon_log_level = "trace"
+local harpoon = require("harpoon")
 
 -- REQUIRED
 harpoon:setup()
@@ -24,6 +23,8 @@ vim.keymap.set("n", "<leader>i", function()
 end
 )
 
+--[[
 -- Telescope Commands
 local telescope = require("telescope")
 telescope:setup()
+--]]

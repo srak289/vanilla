@@ -5,6 +5,10 @@ function srak::argparse() {
 
 }
 
+function srak::ipify() {
+    curl -sL https://api.ipify.org
+}
+
 function srak::newproj() {
     declare -i PIP
     if [ "$1" == "--nopip" ]; then

@@ -1,5 +1,13 @@
 [user]
  	name = Spencer Rak
  	email = spencer.rak@gmail.com
+
 [init]
 	defaultBranch = main
+
+[alias]
+    s = status
+    d = diff
+    bav = branch -av
+    co = checkout
+    ci = commit

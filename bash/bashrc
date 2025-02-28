@@ -64,6 +64,7 @@ export HISTCONTROL=ignoreboth
 export PATH=${HOME}/.local/bin:${PATH}
 
 export EDITOR=nvim
+export MANPAGER='nvim +Man!'
 
 if [ -f ${HOME}/.bash_alias ]; then
     source ${HOME}/.bash_alias
