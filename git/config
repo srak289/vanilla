@@ -6,8 +6,10 @@
 	defaultBranch = main
 
 [alias]
+    l = log
     s = status
     d = diff
     bav = branch -av
     co = checkout
     ci = commit
+    p = push

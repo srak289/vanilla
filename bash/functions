@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 function srak::argparse() {
     return 0
 
@@ -34,4 +35,8 @@ function srak::setup_agent() {
         # debian
         export SSH_AUTH_SOCK=/run/user/${UID}/openssh_agent
     fi
+}
+
+function srak::source() {
+    source ${HOME}/.bashrc
 }

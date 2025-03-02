@@ -2,7 +2,10 @@
 
 alias vi='nvim'
 alias vim='nvim'
+alias e='nvim'
+
 alias venv='source .env/bin/activate'
+
 alias ls='ls --color=auto'
 if [ $(which rg) ]; then
     alias grep='rg'
@@ -28,3 +31,7 @@ alias np="srak::new_project"
 alias m='make'
 
 alias p='python3'
+
+alias so='srak::source'
+
+alias t='tree'

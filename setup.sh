@@ -22,16 +22,18 @@ BASH_PROFILE=${HOME}/.bash_profile
 GIT_CONFIG=${HOME}/.gitconfig
 
 function setup() {
-    mv ${VANILLA_GIT} ${VANILLA}
+    if [ -d ${VANILLA_GIT} ]; then
+        mv ${VANILLA_GIT} ${VANILLA}
+    fi
 }
 
 function mklinks() {
     ln -sf ${VANILLA}/nvim ${CONFIG}
-    ln -sf ${VANILLA}/bash/bashrc ${BASHRC}
-    ln -sf ${VANILLA}/bash/bash_alias ${BASH_ALIAS}
-    ln -sf ${VANILLA}/bash/bash_functions ${BASH_FUNCTIONS}
-    ln -sf ${VANILLA}/bash/bash_profile ${BASH_PROFILE}
-    ln -sf ${VANILLA}/git/gitconfig ${GIT_CONFIG}
+    ln -sf ${VANILLA}/bash/rc ${BASHRC}
+    ln -sf ${VANILLA}/bash/alias ${BASH_ALIAS}
+    ln -sf ${VANILLA}/bash/functions ${BASH_FUNCTIONS}
+    ln -sf ${VANILLA}/bash/profile ${BASH_PROFILE}
+    ln -sf ${VANILLA}/git/config ${GIT_CONFIG}
 }
 
 setup
