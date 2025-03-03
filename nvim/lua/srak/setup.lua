@@ -9,6 +9,7 @@ vim.opt.et = true
 
 -- set leader
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- netrw command
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -46,7 +47,14 @@ vim.keymap.set("n", "<leader>sn", function()
 end
 )
 
--- todo need treesitter to change lua indent to 2space
-
 vim.keymap.set("n", "<leader><leader>", ":so<CR>")
---function like leader>m > manpage
+
+-- TODO read about the api
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    pattern = {"*.lua", "*.yml", "*.yaml"},
+    callback = function(evt)
+      vim.bo.ts = 2
+      vim.bo.sw = 2
+    end
+})
+-- https://www.reddit.com/r/neovim/comments/1b6dsb4/changing_certain_settings_based_on_filetype/
