@@ -6,24 +6,20 @@ return {
       "nvim-lua/plenary.nvim",
   },
   config = function()
-    --vim.g.harpoon_log_level = "trace"
+    vim.g.harpoon_log_level = "trace"
     local harpoon = require("harpoon")
-
-    -- REQUIRED
-    harpoon:setup()
-    -- REQUIRED
-
     harpoon.ui = require("harpoon.ui")
-    harpoon.mark = require("harpoon.mark")
+
+    harpoon:setup()
 
     vim.keymap.set("n", "<leader>u", function()
-      harpoon.ui.toggle_quick_menu()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
     end)
     vim.keymap.set("n", "<leader>o", function()
-      harpoon.ui.nav_prev()
+      harpoon.ui:nav_prev()
     end)
     vim.keymap.set("n", "<leader>i", function()
-      harpoon.ui.nav_next()
+      harpoon.ui:nav_next()
     end)
   end
 }
