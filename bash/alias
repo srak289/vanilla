@@ -1,7 +1,7 @@
 #!/bin/bash
 
-alias vi='nvim'
 alias vim='nvim'
+alias vi='nvim'
 alias e='nvim'
 
 alias venv='source .env/bin/activate'
@@ -13,9 +13,10 @@ else
     alias grep='grep --color=auto'
 fi
 
-alias l='ls -CF'
-alias la='ls -lA'
-alias ll='ls -l'
+# why lead with l?
+alias s='ls -CF'
+alias a='ls -lA'
+alias sa='ls -la'
 
 alias f='fg'
 
