@@ -4,7 +4,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias e='nvim'
 
-alias venv='source .env/bin/activate'
+alias ve='source .env/bin/activate'
 
 alias ls='ls --color=auto'
 if [ $(which rg) ]; then
