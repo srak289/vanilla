@@ -33,6 +33,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = "srak.lazy",
-  install = { colorscheme = { "solarized" } },
+  install = { colorscheme = { "kanagawa-wave" } },
   checker = { enabled = false },
 })

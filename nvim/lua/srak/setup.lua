@@ -6,6 +6,7 @@ vim.opt.nu = true
 vim.opt.ts = 4
 vim.opt.sw = 4
 vim.opt.et = true
+vim.opt.scrolloff = 999
 
 -- set leader
 vim.g.mapleader = " "

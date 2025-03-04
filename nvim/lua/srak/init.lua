@@ -1,2 +1,3 @@
 require("srak.setup")
-require("srak.lazyinit")
+require("srak.initlazy")
+require("srak.colors")
