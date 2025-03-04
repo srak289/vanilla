@@ -4,11 +4,6 @@ VANILLA_GIT=$(realpath $(dirname ${PWD}/${0}))
 TOP=$(dirname ${VANILLA_GIT})
 VANILLA=${TOP}/.vanilla
 
-echo $VANILLA_GIT
-echo $TOP
-echo $VANILLA
-
-
 # dirs
 CONFIG=${HOME}/.config
 LOCALBIN=${HOME}/.local/bin

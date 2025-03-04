@@ -14,6 +14,8 @@ return {
     end, { desc = "Telescope relative find files" })
     vim.keymap.set("n", "<leader>fg", cmd.live_grep, { desc = "Telescope live grep" })
     vim.keymap.set("n", "<leader>fb", cmd.buffers, { desc = "Telescope buffers" })
-    vim.keymap.set("n", "<leader>fh", cmd.help_tags, { desc = "Telescope help tags" })
+    vim.keymap.set("n", "<leader>fh", function()
+      cmd.find_files({hidden = true})
+    end, { desc = "Telescope find hidden files" })
   end
 }

@@ -7,6 +7,7 @@ vim.opt.ts = 4
 vim.opt.sw = 4
 vim.opt.et = true
 vim.opt.scrolloff = 999
+vim.opt.wrap = false
 
 -- set leader
 vim.g.mapleader = " "
