@@ -6,14 +6,16 @@
 	defaultBranch = main
 
 [alias]
-    l = log -u
-    s = status
-    d = diff
+    a = add
+    aa = add -A
     b = branch -av
-    co = checkout
-    sw = switch
     c = commit
+    co = checkout
+    d = diff
+    fa = fetch --all
+    l = log -u
     p = push
     pu = pull
-    fa = fetch --all
+    s = status
     snap = commit -am "Snapshot"
+    sw = switch
