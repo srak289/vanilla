@@ -1,10 +1,10 @@
 vim.o.termguicolors = true
 local background = os.getenv("NVIM_BACKGROUND")
 local colorscheme = os.getenv("NVIM_COLORSCHEME")
-if background == "" then
+if background == nil then
   background = "dark"
 end
-if colorscheme == "" then
+if colorscheme == nil then
   colorscheme = "kanagawa-wave"
 end
 vim.o.background = background

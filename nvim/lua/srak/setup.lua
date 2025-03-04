@@ -26,15 +26,18 @@ vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>W", ":wqa<CR>")
 vim.keymap.set("n", "<leader>q", ":q!<CR>")
 vim.keymap.set("n", "<leader>Q", ":qa!<CR>")
+vim.keymap.set("n", "<leader>:", "q:")
+vim.keymap.set("i", "jk", "<ESC>")
 
 vim.keymap.set("n", "<leader>b", function()
-    print("TODO read integer for buffer")
+  print("TODO read integer for buffer")
 end
 )
 
 -- 'dir' commands
 -- dir-list
 vim.keymap.set("n", "<leader>dl", ":!ls<CR>")
+-- FIXME: not all versions off `tree` have `--gitignore`
 vim.keymap.set("n", "<leader>dt", ":!tree --gitignore<CR>")
 vim.keymap.set("n", "<leader>dm", function()
   print("TODO read name for mkdir")
@@ -52,10 +55,10 @@ vim.keymap.set("n", "<leader><leader>", ":so<CR>")
 
 -- TODO read about the api
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    pattern = {"*.lua", "*.yml", "*.yaml"},
-    callback = function(evt)
-      vim.bo.ts = 2
-      vim.bo.sw = 2
-    end
+  pattern = {"*.lua", "*.yml", "*.yaml"},
+  callback = function(evt)
+    vim.bo.ts = 2
+    vim.bo.sw = 2
+  end
 })
 -- https://www.reddit.com/r/neovim/comments/1b6dsb4/changing_certain_settings_based_on_filetype/
