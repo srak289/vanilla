@@ -1,3 +1,4 @@
+-- Generally the telescope key is 'f'
 return {
   "nvim-telescope/telescope.nvim",
   lazy = false,
@@ -7,15 +8,18 @@ return {
   },
   config = function(_, opts)
     require("telescope"):setup({})
-    local cmd = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>ff", cmd.find_files, { desc = "Telescope find files" })
+    local builtin = require("telescope.builtin")
+    vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+    --cwd = utils.buffer_dir()
     vim.keymap.set("n", "<leader>fr", function()
       vim.print("enter file")
     end, { desc = "Telescope relative find files" })
-    vim.keymap.set("n", "<leader>fg", cmd.live_grep, { desc = "Telescope live grep" })
-    vim.keymap.set("n", "<leader>fb", cmd.buffers, { desc = "Telescope buffers" })
+    vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+    vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+    -- XXX this has the potential to hang if there are tons of containers
+    -- in .local ?
     vim.keymap.set("n", "<leader>fh", function()
-      cmd.find_files({hidden = true})
+      builtin.find_files({hidden = true})
     end, { desc = "Telescope find hidden files" })
   end
 }

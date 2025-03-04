@@ -36,3 +36,7 @@ alias p='python3'
 alias so='srak::source'
 
 alias t='tree'
+
+alias r='rm'
+alias rf='rm -rf'
+alias rd='rmdir'
