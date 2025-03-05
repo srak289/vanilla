@@ -10,6 +10,7 @@
     aa = add -A
     b = branch -av
     c = commit
+    ca = commit -a
     co = checkout
     d = diff
     fa = fetch --all

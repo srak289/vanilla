@@ -10,10 +10,10 @@ vim.opt.scrolloff = 999
 vim.opt.wrap = false
 vim.opt.colorcolumn = "79"
 
-vim.g.srak_nvim_scripts_path = os.getenv("HOME") .. "/.vanilla/nvim/scripts/"
-vim.g.srak_nvim_local_path = os.getenv("HOME") .. "/.srak.lua"
-vim.g.srak_nvim_local = {}
-vim.g.srak_nvim = {}
+vim.g.vanilla_nvim_scripts_path = os.getenv("HOME") .. "/.vanilla/nvim/scripts/"
+vim.g.vanilla_nvim_local_path = os.getenv("HOME") .. "/.vanilla.lua"
+vim.g.vanilla_nvim_local = {}
+vim.g.vanilla_nvim = {}
 
 -- set leader
 vim.g.mapleader = " "

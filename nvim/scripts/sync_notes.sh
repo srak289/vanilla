@@ -20,6 +20,7 @@ if [ ${ACTION} -eq 1 ]; then
     )
 # pull
 elif [ ${ACTION} -eq 2 ]; then
+    # TODO change to provided target override .. perhaps from neorg config
     git -C ${HOME} clone --depth 1 git@github.com:srak289/notes.git
 else
     echo "arg1 must be 1 or 2"

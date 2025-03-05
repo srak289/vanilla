@@ -2,6 +2,8 @@
 
 # -- enable root console login
 
+USERNAME=changeme
+
 cat <<EOF > /etc/securetty
 tty0
 tty1
@@ -28,9 +30,9 @@ auth [success=done default=ignore] pam_securetty.so
 EOF
 cat /tmp/login >> /etc/pam.d/login
 
-useradd srak
-usermod -aG sudo srak
-chsh -s /bin/bash srak
-echo -e "Password1234#\nPassword1234#" | passwd srak
-echo 'srak ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/srak
+useradd ${USERNAME}
+usermod -aG sudo ${USERNAME}
+chsh -s /bin/bash ${USERNAME}
+echo -e "Password1234#\nPassword1234#" | passwd ${USERNAME}
+echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME}
 
