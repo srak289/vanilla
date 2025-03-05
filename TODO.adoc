@@ -1,5 +1,0 @@
-Capture kde settings for setup
-
-Package removal
-
-Remove "srak" and replace with "user" env declaration

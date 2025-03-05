@@ -1,0 +1,4 @@
+* Improvement
+- ( ) Capture kde settings for setup
+- ( ) Package removal
+- (x) Remove "srak" and replace with "user" env declaration
