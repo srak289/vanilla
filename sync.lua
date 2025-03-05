@@ -1,3 +1,6 @@
+vim.g.srak_neorg_sync_notes = true
+vim.g.srak_neorg_has_synced_notes = false
+
 local custom_group = vim.api.nvim_create_augroup("custom_group", { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost',  { 
     group = custom_group,
@@ -6,8 +9,7 @@ vim.api.nvim_create_autocmd('BufWritePost',  {
 })
 
 
--- Define a global variable to track if the pull has been executed in the session
-vim.g.has_pulled_notes = false
+
 vim.api.nvim_create_autocmd('BufRead', {
     group = custom_group,
     pattern = "*.norg",

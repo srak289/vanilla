@@ -26,9 +26,9 @@ vim.opt.rtp:prepend(lazypath)
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
 --
--- this is done in srak plugin, sourced before lazy at top-level
+-- this is done in srak.setup plugin, sourced before lazy at top-level
 -- vim.g.mapleader = " "
--- vim.g.maplocalleader = "\\"
+-- vim.g.maplocalleader = " "
 
 -- Setup lazy.nvim
 require("lazy").setup({
