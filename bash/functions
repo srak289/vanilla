@@ -1,16 +1,16 @@
 #!/bin/bash
 
 
-function srak::argparse() {
+function vanilla::argparse() {
     return 0
 
 }
 
-function srak::ipify() {
+function vanilla::ipify() {
     curl -sL https://api.ipify.org
 }
 
-function srak::newproj() {
+function vanilla::newproj() {
     declare -i PIP
     if [ "$1" == "--nopip" ]; then
         PIP=0
@@ -26,7 +26,7 @@ function srak::newproj() {
     fi
 }
 
-function srak::setup_agent() {
+function vanilla::setup_agent() {
     if [ -S /run/user/${UID}/keyring/ssh ]; then
         # ubuntu
         export SSH_AUTH_SOCK=/run/user/${UID}/keyring/ssh
@@ -37,6 +37,6 @@ function srak::setup_agent() {
     fi
 }
 
-function srak::source() {
+function vanilla::source() {
     source ${HOME}/.bashrc
 }

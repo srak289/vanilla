@@ -83,7 +83,7 @@ declare -x _VANILLA_SOURCED=true
 
 if [ -z ${SSH_AUTH_SOCK:-} ]; then
     if [ -z ${SSH_CONNECTION:-} ]; then
-        srak::setup_agent
+        vanilla::setup_agent
     fi
 fi
 

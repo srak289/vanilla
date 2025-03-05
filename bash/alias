@@ -27,13 +27,13 @@ alias h='man'
 alias i='invoke'
 
 # our functions
-alias np="srak::new_project"
+alias np="vanilla::new_project"
 
 alias m='make'
 
 alias p='python3'
 
-alias so='srak::source'
+alias so='vanilla::source'
 
 alias t='tree'
 
