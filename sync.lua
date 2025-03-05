@@ -1,25 +1,33 @@
-vim.g.srak_neorg_sync_notes = true
-vim.g.srak_neorg_has_synced_notes = false
+local srak_neorg_sync = vim.api.nvim_create_augroup("srak_neorg_sync", { clear = true })
 
-local custom_group = vim.api.nvim_create_augroup("custom_group", { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost',  { 
-    group = custom_group,
+---Push notes on write
+    group = srak_neorg_sync,
     pattern = "*.norg",
-    command = "silent !bash -c 'cd ~/notes && git add * && (git diff-index --quiet HEAD || git commit -am \"sync\") && git pull && git push && echo \"git push to neorg-notes completed.\" && cd - ' "
+    callback = function()
+      --"silent !bash "
+      if vim.g.srak_nvim_config.notes.sync then
+        if vim.g.srak_nvim_config.notes.branch then
+          print("lmao")
+        end
+      end
+    end
 })
 
-
-
+--TODO write link path if not exists when jumping to new directory from index
 vim.api.nvim_create_autocmd('BufRead', {
-    group = custom_group,
+---Pull notes if not present
+    group = srak_neorg_sync,
     pattern = "*.norg",
     callback = function()
         -- Check if we've already pulled the notes in this session
-        if not vim.g.has_pulled_notes then
+        if not vim.g.srak_nvim.notes.has_synced then
             -- Your command to pull from the git repository
-            vim.cmd("silent !bash -c 'cd ~/notes && git pull && echo \"git pull from neorg-notes completed.\" && cd -'")
-            -- Set the flag to true so this block won't run again in this session
             vim.g.has_pulled_notes = true
         end
+      if vim.g.srak_nvim_config.notes.sync then
+        print("push")
+      end
+    end
     end
 })

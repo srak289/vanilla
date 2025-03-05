@@ -11,9 +11,9 @@ vim.opt.wrap = false
 vim.opt.colorcolumn = "79"
 
 vim.g.srak_nvim_scripts_path = os.getenv("HOME") .. "/.vanilla/nvim/scripts/"
-vim.g.srak_nvim_local_config_path = os.getenv("HOME") .. "/.srak.lua"
-vim.g.srak_nvim_local_config = {}
-vim.g.srak_nvim_config = {}
+vim.g.srak_nvim_local_path = os.getenv("HOME") .. "/.srak.lua"
+vim.g.srak_nvim_local = {}
+vim.g.srak_nvim = {}
 
 -- set leader
 vim.g.mapleader = " "
