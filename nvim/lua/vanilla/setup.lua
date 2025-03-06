@@ -23,6 +23,10 @@ vim.g.vanilla_nvim = {}
 --			      autocmd TermOpen * startinsert
 --  end
 --)
+--
+-- TODO: nice to have a map for "open terminal at current buffer position"
+-- TODO: run cmd at current buffer position
+
 -- set leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
