@@ -30,6 +30,7 @@ alias i='invoke'
 alias np="vanilla::new_project"
 
 alias m='make'
+alias md='mkdir'
 
 alias p='python3'
 

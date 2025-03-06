@@ -15,6 +15,14 @@ vim.g.vanilla_nvim_local_path = os.getenv("HOME") .. "/.vanilla.lua"
 vim.g.vanilla_nvim_local = {}
 vim.g.vanilla_nvim = {}
 
+--vim.g.Vanilla = vim.api.nvim_create_augroup(
+--  "vanilla"
+--)
+--vim.api.nvim_create_autocmd(
+--  callback = function()
+--			      autocmd TermOpen * startinsert
+--  end
+--)
 -- set leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
