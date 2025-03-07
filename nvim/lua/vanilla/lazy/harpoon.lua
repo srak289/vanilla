@@ -1,7 +1,8 @@
 return {
-  "ThePrimeagen/harpoon",
+  --"srak289/harpoon",
+  --branch = "harpoon2",
+  dir = "~/project/harpoon",
   lazy = false,
-  branch = "harpoon2",
   dependencies = {
       "nvim-lua/plenary.nvim",
   },
