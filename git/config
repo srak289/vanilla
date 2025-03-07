@@ -14,8 +14,11 @@
     co = checkout
     d = diff
     fa = fetch --all
-    l = log -u
+    l = log
+    ln = log -n
+    lu = log -u
     p = push
+    pf = push --force
     pu = pull
     s = status
     snap = commit -am "Snapshot"
