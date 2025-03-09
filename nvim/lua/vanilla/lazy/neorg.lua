@@ -62,7 +62,8 @@ return {
     })
 
     vim.keymap.set("n", "<leader>ni", ":Neorg index<CR>")
-    vim.keymap.set("n", "<leader>nj", ":Neorg journal")
+    vim.keymap.set("n", "<leader>nj", ":Neorg journal today")
+    vim.keymap.set("n", "<leader>nc", ":Neorg journal custom")
     vim.keymap.set("n", "<leader>nr", ":Neorg return<CR>")
     vim.keymap.set("n", "<leader>nw", ":Neorg workspace")
   end,
