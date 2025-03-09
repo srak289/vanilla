@@ -40,3 +40,19 @@ function vanilla::setup_agent() {
 function vanilla::source() {
     source ${HOME}/.bashrc
 }
+
+function vanilla::find() {
+    declare TYPE=""
+    declare I=""
+    if [ "$1" == "-d" ]; then
+        TYPE="d"
+        shift
+    else
+        TYPE="f"
+    fi
+    if [ "$1" == "-i" ]; then
+        declare I="i"
+        shift
+    fi
+    find . -${I}name \*$1\* -type ${TYPE}
+}

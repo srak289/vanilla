@@ -19,6 +19,10 @@ alias a='ls -lA'
 alias sa='ls -la'
 
 alias f='fg'
+alias fd='vanilla::find -d'
+alias fdi='vanilla::find -d -i'
+alias ff='vanilla::find'
+alias ffi='vanilla::find -i'
 
 alias g='git'
 alias gc='git -C'
