@@ -1,9 +1,23 @@
 #!/bin/bash
 
-
 function vanilla::argparse() {
     return 0
+}
 
+function vanilla::jsonify() {
+    local STR="{"
+    local K=${1%=*}
+    local V=${1#*=}
+    STR="$STR\"$K\": \"$V\""
+    shift
+    while [ $# -gt 0 ]; do
+        K=${1%=*}
+        V=${1#*=}
+        STR="$STR, \"$K\": \"$V\""
+        shift
+    done
+    STR="$STR}"
+    echo $STR
 }
 
 function vanilla::ipify() {

@@ -23,3 +23,6 @@
     s = status
     snap = commit -am "Snapshot"
     sw = switch
+
+[pull]
+    rebase = true
