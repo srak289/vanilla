@@ -20,6 +20,14 @@ function vanilla::jsonify() {
     echo $STR
 }
 
+function vanilla::install() {
+    declare TARGET=${VANILLA}/install/$1.sh
+    if [ -f ${TARGET} ]; then
+        bash ${TARGET}
+    else
+        echo "No vanilla install for $1"
+    fi
+}
 function vanilla::ipify() {
     curl -sL https://api.ipify.org
 }
