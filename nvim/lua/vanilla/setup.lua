@@ -77,8 +77,18 @@ end)
 vim.keymap.set("n", "<leader>sn", function()
   vim.wo.nu = not vim.wo.nu
   vim.wo.rnu = not vim.wo.rnu
-end
-)
+end)
+
+--[[
+vim.keymap.set("x", "#", function()
+  local lines = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."))
+  local newlines = {}
+  for i, line in ipairs(lines) do
+    newlines[i] = vim.bo.commentstring..line
+  end
+  vim.api.nvim_buf_set_lines(bufnr)
+end)
+--]]
 
 vim.keymap.set("n", "<leader><leader>", ":so<CR>")
 

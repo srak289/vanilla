@@ -10,6 +10,7 @@ local vanilla_nvim_config = {
     shiftwidth = 4,
     expandtab = true,
     scrolloff = 999,
+    mouse = "",
     wrap = false,
     colorcolumn = "79",
     termguicolors = true,
@@ -43,7 +44,6 @@ end
 
 -- merge local config
 for k, v in pairs(vanilla_nvim_local_config) do
-  print("Merging "..k.." value "..vim.inspect(v))
   vanilla_nvim_config[k] = vim.tbl_extend("force", vanilla_nvim_config[k], v)
 end
 
@@ -51,11 +51,9 @@ vim.g.vanilla_nvim_config = vanilla_nvim_config
 vim.g.vanilla_nvim_local_config = vanilla_nvim_local_config
 
 for k, v in pairs(vim.g.vanilla_nvim_config.opt) do
-  vim.print("Setting opt "..k.." to "..tostring(v))
   vim.opt[k] = v
 end
 for k, v in pairs(vim.g.vanilla_nvim_config.cmd) do
-  vim.print("Running cmd `:"..k.." "..v.."`")
   local status = pcall(vim.cmd, {cmd=k, args={v}})
   if not status then
     vim.print("Cmd "..k.." failed!")
