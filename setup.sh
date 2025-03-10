@@ -1,12 +1,20 @@
 #!/bin/sh
 
-VANILLA_GIT=$(realpath $(dirname ${PWD}/${0}))
-TOP=$(dirname ${VANILLA_GIT})
+VANILLA_CHECKOUT=$(realpath $(dirname ${PWD}/${0}))
+TOP=$(dirname ${VANILLA_CHECKOUT})
+# perhaps we want to send this to ${HOME}
 VANILLA=${TOP}/.vanilla
 
 # dirs
 CONFIG=${HOME}/.config
-LOCALBIN=${HOME}/.local/bin
+LOCAL_BIN=${HOME}/.local/bin
+
+if [ ! -d ${LOCAL_BIN} ]; then
+    mkdir -p ${LOCAL_BIN}
+fi
+if [ ! -d ${CONFIG} ]; then
+    mkdir -p ${CONFIG}
+fi
 
 # files
 BASHRC=${HOME}/.bashrc
@@ -17,8 +25,8 @@ BASH_PROFILE=${HOME}/.bash_profile
 GIT_CONFIG=${HOME}/.gitconfig
 
 function setup() {
-    if [ -d ${VANILLA_GIT} ]; then
-        mv ${VANILLA_GIT} ${VANILLA}
+    if [ -d ${VANILLA_CHECKOUT} ]; then
+        mv ${VANILLA_CHECKOUT} ${VANILLA}
     fi
 }
 
