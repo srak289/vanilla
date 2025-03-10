@@ -12,6 +12,12 @@ vim.opt.colorcolumn = "79"
 
 vim.g.vanilla_nvim_scripts_path = os.getenv("HOME") .. "/.vanilla/nvim/scripts/"
 vim.g.vanilla_nvim_local_path = os.getenv("HOME") .. "/.vanilla.lua"
+-- make a local copy and write back
+-- e.g.
+-- local foo = vim.g.foo = {}
+-- foo.whatever = "something"
+-- vim.g.foo = foo
+--
 vim.g.vanilla_nvim_local = {}
 vim.g.vanilla_nvim = {}
 
@@ -48,20 +54,47 @@ vim.keymap.set("n", "<leader>Q", ":qa!<CR>")
 vim.keymap.set("n", "<leader>:", "q:")
 vim.keymap.set("i", "jk", "<ESC>")
 
+-- term commands
+vim.keymap.set("n", "<leader>t", ":term<CR>A")
+vim.keymap.set("n", "<leader>pt", ":term python3<CR>A")
+
 vim.keymap.set("n", "<leader>b", function()
-  print("TODO read integer for buffer")
-end
-)
+  vim.ui.input({prompt="Buffer to jump to: "}, function(input)
+    vim.cmd(":b "..input)
+  end)
+end)
 
 -- 'dir' commands
 -- dir-list
 vim.keymap.set("n", "<leader>dl", ":!ls<CR>")
 -- FIXME: not all versions off `tree` have `--gitignore`
+--[[
+local tree = function()
+  local tv = vim.cmd("tree --version")
+  if tv then
+    return function()
+      vim.cmd(":tree --gitignore<CR>")
+    end
+  else
+    return function()
+      vim.cmd(":tree --gitignore<CR>")
+    end
+  end
+end
+--]]
+
 vim.keymap.set("n", "<leader>dt", ":!tree --gitignore<CR>")
 vim.keymap.set("n", "<leader>dm", function()
-  print("TODO read name for mkdir")
-end
-)
+  vim.ui.input({prompt="Directory to create: "}, function(input)
+    vim.cmd(":silent !mkdir "..input)
+  end)
+end)
+vim.keymap.set("n", "<leader>e", function()
+  -- tab complete would be sick
+  vim.ui.input({prompt="File to edit: "}, function(input)
+    vim.cmd(":e "..input)
+  end)
+end)
 
 -- toggle nu/rnu
 vim.keymap.set("n", "<leader>sn", function()
