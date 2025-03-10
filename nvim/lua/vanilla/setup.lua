@@ -1,38 +1,3 @@
--- set options
-vim.opt.ai = true
-vim.opt.aw = true
-vim.opt.rnu = true
-vim.opt.nu = true
-vim.opt.ts = 4
-vim.opt.sw = 4
-vim.opt.et = true
-vim.opt.scrolloff = 999
-vim.opt.wrap = false
-vim.opt.colorcolumn = "79"
-
-vim.g.vanilla_nvim_scripts_path = os.getenv("HOME") .. "/.vanilla/nvim/scripts/"
-vim.g.vanilla_nvim_local_path = os.getenv("HOME") .. "/.vanilla.lua"
--- make a local copy and write back
--- e.g.
--- local foo = vim.g.foo = {}
--- foo.whatever = "something"
--- vim.g.foo = foo
---
-vim.g.vanilla_nvim_local = {}
-vim.g.vanilla_nvim = {}
-
---vim.g.Vanilla = vim.api.nvim_create_augroup(
---  "vanilla"
---)
---vim.api.nvim_create_autocmd(
---  callback = function()
---			      autocmd TermOpen * startinsert
---  end
---)
---
--- TODO: nice to have a map for "open terminal at current buffer position"
--- TODO: run cmd at current buffer position
-
 -- set leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -57,6 +22,18 @@ vim.keymap.set("i", "jk", "<ESC>")
 -- term commands
 vim.keymap.set("n", "<leader>t", ":term<CR>A")
 vim.keymap.set("n", "<leader>pt", ":term python3<CR>A")
+
+--vim.g.Vanilla = vim.api.nvim_create_augroup(
+--  "vanilla"
+--)
+--vim.api.nvim_create_autocmd(
+--  callback = function()
+--			      autocmd TermOpen * startinsert
+--  end
+--)
+--
+-- TODO: nice to have a map for "open terminal at current buffer position"
+-- TODO: run cmd at current buffer position
 
 vim.keymap.set("n", "<leader>b", function()
   vim.ui.input({prompt="Buffer to jump to: "}, function(input)
