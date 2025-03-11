@@ -8,13 +8,16 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- buffer commands
 vim.keymap.set("n", "<leader>h", ":bp<CR>")
 vim.keymap.set("n", "<leader>j", ":bw<CR>")
+vim.keymap.set("n", "<leader>J", ":w<CR>:bw<CR>") -- this is our write-close for buffer
 vim.keymap.set("n", "<leader>l", ":bn<CR>")
 vim.keymap.set("n", "<leader>k", ":ls<CR>")
 
 -- window commands
 vim.keymap.set("n", "<leader>w", ":w<CR>")
-vim.keymap.set("n", "<leader>W", ":wqa<CR>")
-vim.keymap.set("n", "<leader>q", ":q!<CR>")
+vim.keymap.set("n", "<leader>W", ":wqa<CR>") -- perhaps W/Q can detect split and only fire to close the split
+-- perhaps W can do :w :bw instead of :wqa because it feels more natural to W when I want to write-close just the one
+-- file rather than two keys to write, then close just the one buffer ...
+vim.keymap.set("n", "<leader>q", ":q!<CR>") -- we may not necessarily want q!
 vim.keymap.set("n", "<leader>Q", ":qa!<CR>")
 vim.keymap.set("n", "<leader>:", "q:")
 vim.keymap.set("i", "jk", "<ESC>")
@@ -22,6 +25,11 @@ vim.keymap.set("i", "jk", "<ESC>")
 -- term commands
 vim.keymap.set("n", "<leader>t", ":term<CR>A")
 vim.keymap.set("n", "<leader>pt", ":term python3<CR>A")
+
+-- Would be nice to have a shortcut for scratch buffer
+--:setlocal buftype=nofile
+--:setlocal bufhidden=hide
+--:setlocal noswapfile
 
 --vim.g.Vanilla = vim.api.nvim_create_augroup(
 --  "vanilla"
