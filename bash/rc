@@ -79,7 +79,7 @@ if [ -x left ]; then
     left
 fi
 
-declare -x _VANILLA_SOURCED=true
+declare _VANILLA_SOURCED=true
 
 if [ -z ${SSH_AUTH_SOCK:-} ]; then
     if [ -z ${SSH_CONNECTION:-} ]; then
