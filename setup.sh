@@ -23,8 +23,12 @@ BASH_FUNCTIONS=${HOME}/.bash_functions
 BASH_PROFILE=${HOME}/.bash_profile
 
 GIT_CONFIG=${HOME}/.gitconfig
+TMUX_CONFIG=${HOME}/.tmux.conf
 
 function setup() {
+    if [ "$(basename ${VANILLA_CHECKOUT})" == ".vanilla" ]; then
+        return
+    fi
     if [ -d ${VANILLA_CHECKOUT} ]; then
         mv ${VANILLA_CHECKOUT} ${VANILLA}
     fi
@@ -37,6 +41,7 @@ function mklinks() {
     ln -sf ${VANILLA}/bash/functions ${BASH_FUNCTIONS}
     ln -sf ${VANILLA}/bash/profile ${BASH_PROFILE}
     ln -sf ${VANILLA}/git/config ${GIT_CONFIG}
+    ln -sf ${VANILLA}/tmux/config ${TMUX_CONFIG}
 }
 
 setup
