@@ -13,7 +13,7 @@ BIN=fd
 
 wget ${URL} -O ${TGT}
 
-TGT_TOPDIR=$(tar tf ${TGT} | sed -n 1p)
+TGT_TOPDIR=$(tar tf ${TGT} | sed -n 1p | grep -o '.*/')
 LOCAL_BIN="${HOME}/.local/bin"
 
 # trailing slash in RG_TOPDIR from tar listing
