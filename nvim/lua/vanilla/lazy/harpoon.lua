@@ -1,7 +1,7 @@
 return {
   --"srak289/harpoon",
   --branch = "harpoon2",
-  dir = "~/project/harpoon",
+  dir = vim.g.vanilla_nvim_local_plugin_path .. "/harpoon",
   lazy = false,
   dependencies = {
       "nvim-lua/plenary.nvim",

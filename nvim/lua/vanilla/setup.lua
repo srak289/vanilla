@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- where we put things we want to wrench on / experiment with
+vim.g.vanilla_nvim_local_plugin_path = os.getenv("HOME") .. "/.vanilla/nvim/local/"
+
 -- netrw command
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -44,7 +47,7 @@ vim.keymap.set("n", "<leader>pt", ":term python3<CR>A")
 -- TODO: run cmd at current buffer position
 
 vim.keymap.set("n", "<leader>b", function()
-  vim.ui.input({prompt="Buffer to jump to: "}, function(input)
+  vim.ui.input({prompt="Buffer to jump to: ", completion="buffer"}, function(input)
     vim.cmd(":b "..input)
   end)
 end)
@@ -75,8 +78,7 @@ vim.keymap.set("n", "<leader>dm", function()
   end)
 end)
 vim.keymap.set("n", "<leader>e", function()
-  -- tab complete would be sick
-  vim.ui.input({prompt="File to edit: "}, function(input)
+  vim.ui.input({prompt="File to edit: ", completion="file"}, function(input)
     vim.cmd(":e "..input)
   end)
 end)

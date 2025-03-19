@@ -1,5 +1,11 @@
 return {
   "nvim-neorg/neorg",
+  dir = vim.g.vanilla_nvim_local_plugin_path .. "/neorg",
+  dependencies = {
+    "juniorsundar/neorg-extras",
+    "nvim-telescope/telescope.nvim",
+    "nvim-lua/plenary.nvim",
+  },
   lazy = false,
   version = "v9.2.0",
   config = function()
@@ -33,6 +39,8 @@ return {
     end, { desc = "Create New Note", buffer = true })
     --]]
 
+    -- TODO: make notes sync on close
+    -- Perhaps we can have multiple upstreams e.g. gh, router
     --[[
     local vanilla_neorg_sync = vim.api.nvim_create_augroup("vanilla_neorg_sync", { clear = true })
     vim.api.nvim_create_autocmd('BufWritePost', { 
@@ -89,6 +97,17 @@ return {
             default_workspace = "notes",
           }
         },
+        ["external.many-mans"] = {
+          config = {
+            metadata_fold = true,
+            code_fold = true,
+          }
+        },
+        ["external.agenda"] = {
+          config = {
+            workspace = nil,
+          }
+        }
       },
     })
 
