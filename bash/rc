@@ -67,11 +67,11 @@ export PATH=${HOME}/.local/bin:${PATH}
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
 
-if [ -f ${HOME}/.bash_functions ]; then
-    source ${HOME}/.bash_functions
+if [ -f "${HOME}/.bash_functions" ]; then
+    source "${HOME}/.bash_functions"
 fi
-if [ -f ${HOME}/.bash_alias ]; then
-    source ${HOME}/.bash_alias
+if [ -f "${HOME}/.bash_alias" ]; then
+    source "${HOME}/.bash_alias"
 fi
 
 # post source
@@ -82,12 +82,12 @@ fi
 
 declare _VANILLA_SOURCED=true
 
-if [ -z ${SSH_AUTH_SOCK:-} ]; then
-    if [ -z ${SSH_CONNECTION:-} ]; then
+if [ -z "${SSH_AUTH_SOCK:-}" ]; then
+    if [ -z "${SSH_CONNECTION:-}" ]; then
         vanilla::setup_agent
     fi
 fi
 
-if [ -f ${HOME}/.cargo/env ]; then
+if [ -f "${HOME}/.cargo/env" ]; then
     source "${HOME}/.cargo/env"
 fi
