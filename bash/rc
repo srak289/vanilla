@@ -62,7 +62,7 @@ fi
 
 export HISTCONTROL=ignoreboth
 #export HISTIGNORE='fg:cd*:ls*:tomb*'
-export PATH=${HOME}/.local/bin:${PATH}
+export PATH="${HOME}/.local/bin:${PATH}"
 
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
@@ -75,10 +75,6 @@ if [ -f "${HOME}/.bash_alias" ]; then
 fi
 
 # post source
-
-if [ -x left ]; then
-    left
-fi
 
 declare _VANILLA_SOURCED=true
 
