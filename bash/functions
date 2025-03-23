@@ -4,10 +4,6 @@ function vanilla::argparse() {
     return 0
 }
 
-function vanilla::chicken() {
-    echo -e "$(curl -sL https://ipchicken.com | grep -Po '([0-9]{1,3}\.){3}[0-9]{1,3}')\n"
-}
-
 function vanilla::jsonify() {
     local STR="{"
     local K=${1%=*}
@@ -24,16 +20,29 @@ function vanilla::jsonify() {
     echo $STR
 }
 
+function vanilla::regex::nevra() {
+    echo "unimplemented"
+}
+
+function vanilla::regex::ipv4() {
+    echo $(echo ${1} | grep -Po '([0-9]{1,3}\.){3}[0-9]{1,3}')
+}
+
 function vanilla::install() {
-    declare TARGET=${VANILLA}/install/$1.sh
-    if [ -f ${TARGET} ]; then
-        bash ${TARGET}
+    declare TARGET="${VANILLA}/install/${1}.sh"
+    if [ -f "${TARGET}" ]; then
+        bash "${TARGET}"
     else
-        echo "No vanilla install for $1"
+        echo "No vanilla install for ${1}"
     fi
 }
+
+function vanilla::chicken() {
+    echo -e "$(curl -sL https://ipchicken.com | vanilla::regex::ipv4 )"
+}
+
 function vanilla::ipify() {
-    curl -sL https://api.ipify.org
+    echo -e "$(curl -sL https://api.ipify.org)"
 }
 
 function vanilla::newproj() {
@@ -53,18 +62,18 @@ function vanilla::newproj() {
 }
 
 function vanilla::setup_agent() {
-    if [ -S /run/user/${UID}/keyring/ssh ]; then
+    if [ -S "/run/user/${UID}/keyring/ssh" ]; then
         # ubuntu
-        export SSH_AUTH_SOCK=/run/user/${UID}/keyring/ssh
+        export SSH_AUTH_SOCK="/run/user/${UID}/keyring/ssh"
     fi
-    if [ -S /run/user/${UID}/openssh_agent ]; then
+    if [ -S "/run/user/${UID}/openssh_agent" ]; then
         # debian
-        export SSH_AUTH_SOCK=/run/user/${UID}/openssh_agent
+        export SSH_AUTH_SOCK="/run/user/${UID}/openssh_agent"
     fi
 }
 
 function vanilla::source() {
-    source ${HOME}/.bashrc
+    source "${HOME}/.bashrc"
 }
 
 function vanilla::find() {
@@ -81,4 +90,12 @@ function vanilla::find() {
         shift
     fi
     find . -${I}name \*$1\* -type ${TYPE}
+}
+
+function vanilla::tree() {
+    function leaf() {
+        echo "leaf"
+    }
+    CHARS=("│" "├" "└" "─")
+    echo "tree"
 }
