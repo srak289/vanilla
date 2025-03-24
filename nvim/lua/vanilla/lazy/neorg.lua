@@ -1,6 +1,6 @@
 return {
   "nvim-neorg/neorg",
-  dir = vim.g.vanilla_nvim_local_plugin_path .. "/neorg",
+	dev = false,
   dependencies = {
     "juniorsundar/neorg-extras",
     "nvim-telescope/telescope.nvim",
