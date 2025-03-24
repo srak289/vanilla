@@ -34,5 +34,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = "vanilla.lazy",
   install = { colorscheme = { "kanagawa-wave" } },
+  dev = { path = vim.g.vanilla_nvim_local_plugin_path, fallback = true },
   checker = { enabled = false },
 })

@@ -1,7 +1,11 @@
 return {
   "srak289/harpoon",
   branch = "harpoon2",
+<<<<<<< Updated upstream
 	dev = false,
+=======
+  dev = true,
+>>>>>>> Stashed changes
   lazy = false,
   dependencies = {
       "nvim-lua/plenary.nvim",
