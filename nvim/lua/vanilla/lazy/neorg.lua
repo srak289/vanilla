@@ -1,10 +1,7 @@
 return {
   "nvim-neorg/neorg",
-<<<<<<< Updated upstream
 	dev = false,
-=======
   version = "v9.2.0",
->>>>>>> Stashed changes
   dependencies = {
     "juniorsundar/neorg-extras",
     "nvim-telescope/telescope.nvim",
