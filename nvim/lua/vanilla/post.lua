@@ -15,7 +15,6 @@ local vanilla_nvim_config = {
     expandtab = true,
     scrolloff = 999,
     mouse = "",
-    wrap = false,
     colorcolumn = "79",
     termguicolors = true,
   },

@@ -36,3 +36,9 @@ chsh -s /bin/bash ${USERNAME}
 echo -e "Password1234#\nPassword1234#" | passwd ${USERNAME}
 echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME}
 
+mkdir /home/${USERNAME}/.ssh
+KEYS=$(find /home -type f -name authorized_keys | sed -n 1p)
+cp ${KEYS} ${USERNAME}/.ssh/
+chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
+chmod 700 /home/${USERNAME}/.ssh
+chmod 600 /home/${USERNAME}/.ssh/authorized_keys
