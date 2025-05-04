@@ -19,9 +19,10 @@
     lu = log -u
     p = push
     pf = push --force
+    ps = push -o ci.skip
     pu = pull
     s = status
-    snap = commit -am "Snapshot"
+    sn = commit -am "Snapshot"
     sw = switch
 
 [pull]

@@ -4,7 +4,16 @@ alias vim='nvim'
 alias vi='nvim'
 alias e='nvim'
 
+alias nj='nvim +"Neorg journal today"'
+alias njc='nvim +"Neorg journal custom"'
+alias ni='nvim +"Neorg index"'
+
 alias ve='source .env/bin/activate'
+
+alias al='ssh-add -L'
+alias aa='ssh-add'
+alias aac='ssh-add -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so'
+alias ar='vanilla::reset_agent'
 
 alias ls='ls --color=auto'
 if [ $(which rg) ]; then

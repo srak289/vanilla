@@ -100,7 +100,7 @@ vim.keymap.set("x", "#", function()
 end)
 --]]
 
-vim.keymap.set("n", "<leader><leader>", ":so<CR>")
+-- vim.keymap.set("n", "<leader><leader>", ":so<CR>")
 
 -- TODO read about the api
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {

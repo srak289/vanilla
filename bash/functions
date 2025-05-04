@@ -61,15 +61,28 @@ function vanilla::newproj() {
     fi
 }
 
+LOCAL_RUN=${HOME}/.local/run
+if [ ! -d ${LOCAL_RUN} ]; then
+    mkdir -p ${LOCAL_RUN}
+fi
+MYSOCK=${LOCAL_RUN}/agent.sock
+MYPID=${LOCAL_RUN}/agent.pid
+
 function vanilla::setup_agent() {
-    if [ -S "/run/user/${UID}/keyring/ssh" ]; then
-        # ubuntu
-        export SSH_AUTH_SOCK="/run/user/${UID}/keyring/ssh"
+    if [ ! -S ${MYSOCK} ]; then
+        eval `ssh-agent -s -a ${MYSOCK}`
+        echo ${SSH_AGENT_PID} > ${MYPID}
+    else
+        export SSH_AUTH_SOCK=${MYSOCK}
+        if [ -f ${MYPID} ]; then
+            export SSH_AGENT_PID=$(cat ${MYPID})
+        fi
     fi
-    if [ -S "/run/user/${UID}/openssh_agent" ]; then
-        # debian
-        export SSH_AUTH_SOCK="/run/user/${UID}/openssh_agent"
-    fi
+}
+
+function vanilla::reset_agent() {
+    pkill -f "ssh-agent -s -a ${MYSOCK}"
+    vanilla::setup_agent
 }
 
 function vanilla::source() {
