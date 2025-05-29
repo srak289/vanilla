@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cd /sys/class/backlight/intel_backlight
+read MAX < max_brightness
+read CUR < brightness
+
+STEP=$((MAX/20))
+
+case $1 in
+    +)
+        RES=$((CUR+STEP))
+    ;;
+    -)
+        RES=$((CUR-STEP))
+    ;;
+    *)
+        echo "Incorrect usage" >&2
+        exit 1
+    ;;
+esac
+
+echo $RES > brightness

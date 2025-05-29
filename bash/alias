@@ -22,6 +22,10 @@ else
     alias grep='grep --color=auto'
 fi
 
+if [ $(which doas) ]; then
+    alias sudo='doas'
+fi
+
 # why lead with l?
 alias s='ls -CF'
 alias a='ls -lA'
@@ -60,6 +64,8 @@ if [ $(which tree) ]; then
 else
     alias t='vanilla::tree'
 fi
+
+alias show='swayimg'
 
 alias r='rm'
 alias rf='rm -rf'

@@ -36,6 +36,8 @@ function setup() {
 
 function mklinks() {
     ln -sf ${VANILLA}/nvim ${CONFIG}
+    ln -sf ${VANILLA}/sway ${CONFIG}
+    ln -sf ${VANILLA}/wezterm ${CONFIG}
     ln -sf ${VANILLA}/bash/rc ${BASHRC}
     ln -sf ${VANILLA}/bash/alias ${BASH_ALIAS}
     ln -sf ${VANILLA}/bash/functions ${BASH_FUNCTIONS}
