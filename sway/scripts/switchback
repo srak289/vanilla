@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -euE -o pipefail
+
+OUTPUTS=($(swaymsg -t get_outputs | jq '.[]|select(.active==true)' | jq -r '.name'))
+# if [ ${#OUTPUT[@]} -gt 1 ]; then
+#     echo "Found multiple outputs!!"
+# fi
+# echo "Found active output ${OUTPUT}"
+NEW_BG="~/Pictures/Wallpaper/$(ls ~/Pictures/Wallpaper/ | shuf -n 1)"
+# echo "Picking background ${NEW_BG}"
+for O in ${OUTPUTS[@]}; do
+    swaymsg -s ${SWAYSOCK} output ${O} bg ${NEW_BG} fill
+done

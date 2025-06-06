@@ -35,6 +35,7 @@ function setup() {
 }
 
 function mklinks() {
+    ln -sf ${VANILLA}/foot ${CONFIG}
     ln -sf ${VANILLA}/nvim ${CONFIG}
     ln -sf ${VANILLA}/sway ${CONFIG}
     ln -sf ${VANILLA}/wezterm ${CONFIG}

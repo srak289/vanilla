@@ -36,6 +36,7 @@ alias f='fg'
 # alias fdi='vanilla::find -d -i'
 # alias ff='vanilla::find'
 # alias ffi='vanilla::find -i'
+alias fk='sudo !!'
 
 alias g='git'
 alias gc='git -C'
