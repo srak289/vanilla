@@ -32,7 +32,7 @@ output DP-6 {
 }
 
 output DP-7 {
-    resolution 3840x2160
+    resolution 5120x1440
 }
 
 output eDP-1 {

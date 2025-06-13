@@ -2,5 +2,5 @@
 SCRIPT=$(dirname $(realpath ${0}))/switchback
 while true; do
     /bin/bash $SCRIPT
-    sleep 300
+    sleep 600
 done
