@@ -74,7 +74,15 @@ function vanilla::setup_agent() {
         echo ${SSH_AGENT_PID} > ${MYPID}
     else
         export SSH_AUTH_SOCK=${MYSOCK}
-        if [ -f ${MYPID} ]; then
+        if [ ! -f ${MYPID} ]; then
+            rm -f ${MYSOCK}
+            vanilla::setup_agent
+        else
+            ps -h $(cat ${MYPID})
+            if [ $? -ne 0 ]; then
+                rm -f ${MYSOCK} ${MYPID}
+                vanilla::setup_agent
+            fi
             export SSH_AGENT_PID=$(cat ${MYPID})
         fi
     fi

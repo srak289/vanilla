@@ -1,6 +1,6 @@
 [user]
  	name = Spencer Rak
- 	email = spencer.rak@gmail.com
+ 	email = spencer.rak@hadronindustries.com
 
 [init]
 	defaultBranch = main
@@ -8,7 +8,8 @@
 [alias]
     a = add
     aa = add -A
-    b = branch -av
+    b = branch
+    sb = branch -av
     c = commit
     ca = commit -a
     co = checkout
