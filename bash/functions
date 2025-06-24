@@ -120,3 +120,7 @@ function vanilla::tree() {
     CHARS=("│" "├" "└" "─")
     echo "tree"
 }
+
+function vanilla::agent_roulette() {
+    export SSH_AUTH_SOCK=$(find /tmp/ssh-* -name agent.*|shuf|sed -n 1p)
+}
