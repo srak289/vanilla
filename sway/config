@@ -13,6 +13,9 @@ set $menu wofi -fSrun
 
 include /etc/sway/config-vars.d/*
 
+set $config ${HOME}/.config/sway
+set $scripts ${HOME}/.config/sway/scripts
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -39,8 +42,8 @@ output eDP-1 {
     resolution 1920x1080
 }
 
-bindswitch lid:on output eDP-1 disable
-bindswitch lid:off output eDP-1 enable
+# bindswitch lid:on output eDP-1 disable
+# bindswitch lid:off output eDP-1 enable
 
 seat * hide_cursor 3000
 seat * hide_cursor when-typing enable
@@ -256,7 +259,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_command while $true; do $scripts/bar; sleep 10; done
 
     colors {
         statusline #ffffff

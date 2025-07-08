@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ $(cat /sys/class/power_supply/AC/online) -eq 1 ]; then
+    if [ $(cat /sys/class/power_supply/BAT0/capacity) -lt 100 ]; then
+        echo "Charging: $(cat /sys/class/power_supply/BAT0/capacity)%"
+    else
+        echo "AC"
+    fi
+else
+    echo "Battery: $(cat /sys/class/power_supply/BAT0/capacity)"
+fi

@@ -1,0 +1,5 @@
+#!/bin/sh
+SCRIPTS=$(realpath $(dirname ${0}))
+POWER=$(${SCRIPTS}/show-power)
+DATE=$(date +'%Y-%m-%d %R')
+echo "${POWER} | ${DATE}"
