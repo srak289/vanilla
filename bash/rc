@@ -78,6 +78,9 @@ fi
 
 declare _VANILLA_SOURCED=true
 
+# some things don't like TERM=foot
+export TERM=xterm
+
 if [ -z "${SSH_AUTH_SOCK:-}" ]; then
     if [ -z "${SSH_CONNECTION:-}" ]; then
         vanilla::setup_agent

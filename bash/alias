@@ -68,6 +68,7 @@ else
 fi
 
 alias show='swayimg'
+alias today='date +%Y-%m-%d'
 
 alias r='rm'
 alias rf='rm -rf'
