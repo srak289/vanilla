@@ -45,6 +45,11 @@ alias gc='git -C'
 alias h='man'
 alias i='invoke'
 
+alias ncl='networkctl list'
+alias ncs='networkctl status'
+alias ncrl='networkctl reload'
+alias ncrs='systemctl restart systemd-networkd'
+
 # our functions
 alias np="vanilla::new_project"
 
