@@ -45,11 +45,6 @@ alias gc='git -C'
 alias h='man'
 alias i='invoke'
 
-alias ncl='networkctl list'
-alias ncs='networkctl status'
-alias ncrl='networkctl reload'
-alias ncrs='systemctl restart systemd-networkd'
-
 # our functions
 alias np="vanilla::new_project"
 
@@ -78,3 +73,18 @@ alias today='date +%Y-%m-%d'
 alias r='rm'
 alias rf='rm -rf'
 alias rd='rmdir'
+
+alias pce='podman exec -it'
+alias pck='podman stop -t0'
+alias pcs='podman start'
+alias pcr='podman remove'
+alias pci='vanilla::podman_shell'
+alias psall='podman ps -qa|xargs podman start'
+
+alias nwl='networkctl list'
+alias nws='networkctl status'
+alias nwr='networkctl reload'
+alias nwd='networkctl down'
+alias nwu='networkctl up'
+alias nwrs='systemctl restart systemd-networkd'
+
