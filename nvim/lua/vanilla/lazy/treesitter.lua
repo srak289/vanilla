@@ -9,10 +9,6 @@ return {
       "c",
       "python",
       "lua",
-      "norg",
-      "vim",
-      "vimdoc",
-      "query",
     },
     highlight = {
       enable = true,

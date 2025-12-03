@@ -5,9 +5,9 @@ if [ ${EUID} -ne 0 ]; then
 fi
 case $1 in
 	on)
-		echo 0 > /sys/class/net/wlp0s20f3/phy80211/rfkill1/state
+		echo 0 > /sys/class/net/wlan0/phy80211/rfkill1/state
 	;;
 	off)
-		echo 1 > /sys/class/net/wlp0s20f3/phy80211/rfkill1/state
+		echo 1 > /sys/class/net/wlan0/phy80211/rfkill1/state
 	;;
 esac
