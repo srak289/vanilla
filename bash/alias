@@ -17,13 +17,13 @@ alias ar='vanilla::reset_agent'
 alias arou='vanilla::agent_roulette'
 
 alias ls='ls --color=auto'
-if [ $(which rg) ]; then
+if [ $(which rg &> /dev/null) ]; then
     alias grep='rg'
 else
     alias grep='grep --color=auto'
 fi
 
-if [ $(which doas) ]; then
+if [ $(which doas &> /dev/null) ]; then
     alias sudo='doas'
 fi
 
@@ -55,7 +55,11 @@ alias p='python3'
 
 alias so='vanilla::source'
 
-if [ $(which tree) ]; then
+if [ $(which zstd &> /dev/null) ]; then
+    alias rsync='rsync --zc=zstd'
+fi
+
+if [ $(which tree &> /dev/null) ]; then
     # Get the major version number
     VERSION=$(tree --version | grep -Po '[0-9](?=(\.[0-9]){2})')
     if [ ${VERSION} -lt 2  ]; then
