@@ -37,6 +37,7 @@ output "Samsung Electric Company C49RG9x H1AK500000" {
 output eDP-1 {
     resolution 1920x1080
 }
+bindsym $mod+Shift+m output eDP-1 toggle
 
 # bindswitch lid:on output eDP-1 disable
 # bindswitch lid:off output eDP-1 enable
@@ -81,6 +82,7 @@ input * {
 
 # Key bindings
 bindsym $mod+Return exec $term
+bindsym $mod+bracketright exec flameshot gui
 bindsym $mod+Backslash exec qutebrowser
 bindsym $mod+Shift+q kill
 # Do we care?
@@ -130,6 +132,7 @@ bindsym $mod+Shift+Right move right
 # Workspaces:
 #
 # Switch to workspace
+bindsym $mod+0 workspace number 0
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -139,8 +142,8 @@ bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
 # Move focused container to workspace
+bindsym $mod+Shift+0 move container to workspace number 0
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -150,7 +153,6 @@ bindsym $mod+Shift+6 move container to workspace number 6
 bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
 #
@@ -233,10 +235,10 @@ bindsym $mod+Shift+x mode "$mode_system"
 # Utilities:
 #
 # Special keys to adjust volume via PulseAudio
-bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+bindsym --locked XF86AudioMute exec wpctl set-mute \@DEFAULT_AUDIO_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_AUDIO_SOURCE@ toggle
 
 # TODO perhaps we could toggle these mappings depending on whether there was
 # another kb attached? I guess these really only matter on the laptop though
