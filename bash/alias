@@ -59,9 +59,9 @@ if [ $(which zstd &> /dev/null) ]; then
     alias rsync='rsync --zc=zstd'
 fi
 
-if [ $(which tree &> /dev/null) ]; then
+if $(which tree &> /dev/null); then
     # Get the major version number
-    if [ $(tree --version | grep -Po 'v\K\d') -lt 2  ]; then
+    if [ $(tree --version | grep -Po 'v\K\d') -lt 2 ]; then
         alias t='tree'
     else
         alias t='tree --gitignore'
