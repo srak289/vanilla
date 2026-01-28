@@ -17,6 +17,7 @@
     fa = fetch --all
     l = log
     ln = log -n
+    ls = log --stat
     lu = log -u
     p = push
     pf = push --force
@@ -28,3 +29,6 @@
 
 [pull]
     rebase = true
+
+[credential]
+    helper = store --file ~/.gitcredential

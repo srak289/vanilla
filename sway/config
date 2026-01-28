@@ -58,7 +58,7 @@ bindsym Ctrl+Alt+l exec $lock
 
 exec /usr/bin/lxpolkit
 
-exec ${HOME}/.config/sway/scripts/switchback-runner
+exec $scripts/switchback-runner
 
 exec --no-startup-id systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec --no-startup-id hash dbus-update-activation-environment 2>/dev/null && \
@@ -80,9 +80,10 @@ input * {
     xkb_layout us
 }
 
+bindsym Print exec flameshot gui
 # Key bindings
 bindsym $mod+Return exec $term
-bindsym $mod+bracketright exec flameshot gui
+bindsym $mod+bracketright exec $scripts/pipepicker -S
 bindsym $mod+Backslash exec qutebrowser
 bindsym $mod+Shift+q kill
 # Do we care?
@@ -243,11 +244,8 @@ bindsym --locked XF86AudioMicMute exec wpctl set-mute \@DEFAULT_AUDIO_SOURCE@ to
 # TODO perhaps we could toggle these mappings depending on whether there was
 # another kb attached? I guess these really only matter on the laptop though
 # since screens don't dim from the kb
-bindsym --locked XF86MonBrightnessDown exec ${HOME}/.config/sway/scripts/shlight -
-bindsym --locked XF86MonBrightnessUp exec ${HOME}/.config/sway/scripts/shlight +
-
-# Special key to take a screenshot with grim
-bindsym Print exec grim
+bindsym --locked XF86MonBrightnessDown exec $scripts/shlight -
+bindsym --locked XF86MonBrightnessUp exec $scripts/shlight +
 
 #
 # Status Bar:

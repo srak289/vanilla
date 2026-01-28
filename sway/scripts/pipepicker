@@ -1,0 +1,84 @@
+#!/usr/bin/python3
+
+import re
+import shlex
+import subprocess
+import sys
+
+from pathlib import Path
+
+
+name_re = re.compile(r"(\*)?\s+(\d+)\.\s([A-Za-z0-9 -]+)")
+
+def print_help():
+    help = ""
+    help += "Usage: ./pipepicker\n"
+    help += "\t--help|-h\tDisplay help\n"
+    help += "\t--microphone|-M\tPick audio source\n"
+    help += "\t--speakers|-S\tPick audio sink\n"
+    print(help)
+
+def cmd(c, **kwargs):
+    r = subprocess.run(shlex.split(c), capture_output=True, **kwargs)
+    if r.returncode:
+        raise RuntimeError(r.stderr.decode())
+    return map(str.strip, r.stdout.decode().strip().split('\n'))
+
+def main(args):
+    asinks = []
+    asources = []
+    state = 0
+    for line in cmd("wpctl status"):
+        match state:
+            case 0:
+                if line == "Audio":
+                    state = 1
+            case 1:
+                if "Sinks" in line:
+                    state = 2
+            case 2:
+                # capture sinks
+                if m := name_re.search(line):
+                    asinks.append(m.groups())
+                if "Sources" in line:
+                    state = 3
+            case 3:
+                # capture sources
+                if m := name_re.search(line):
+                    asources.append(m.groups())
+                if "Filters" in line:
+                    # we're done the sources
+                    break
+
+    starkey = lambda x: (1 if x[0] == '*' else int(x[1]))
+
+    asinks = sorted(asinks, key=starkey)
+    asink_by_name = {x[2].strip(): x[1] for x in asinks}
+    print(asinks)
+
+    asources = sorted(asources, key=starkey)
+    print(asources)
+    asource_by_name = {x[2].strip(): x[1] for x in asinks}
+
+    # only one choice
+    if args[0] in ("-S", "--speakers"):
+        choices = asinks
+        choice_map = asink_by_name
+    elif args[0] in ("-M", "--microphont"):
+        choices = asources
+        choice_map = asource_by_name
+    else:
+        print(f"Did not find a known option in args {args}")
+        exit(1)
+
+    config = str(Path(sys.argv[0]).parent / "pipepicker.conf")
+    s = next(cmd(f"wofi -d -Odefault --conf={config}", input=b"\n".join(map(lambda x: x[2].encode(), choices))))
+    cmd(f"wpctl set-default {choice_map[s]}")
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+
+    if len(args) == 0:
+        print_help()
+        exit(1)
+    main(args)
