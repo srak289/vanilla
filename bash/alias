@@ -4,26 +4,45 @@ alias vim='nvim'
 alias vi='nvim'
 alias e='nvim'
 
-alias nj='nvim +"Neorg journal today"'
-alias njc='nvim +"Neorg journal custom"'
-alias ni='nvim +"Neorg index"'
+alias k='zk'
+alias kj='nvim +"ZkIndex"'
+alias kn='nvim +"ZkIndex"'
 
 alias ve='source .env/bin/activate'
 
 alias al='ssh-add -L'
 alias aa='ssh-add'
-alias aac='ssh-add -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so'
+
+if [ -f /etc/os-release ]; then
+    source /etc/os-release
+fi
+
+if [ "$ID" == "fedora" ]; then
+    alias aac='ssh-add -s /usr/lib64/pkcs11/opensc-pkcs11.so'
+else
+    alias aac='ssh-add -s /usr/lib64/x86_64-linux-gnu/opensc-pkcs11.so'
+fi
+
 alias ar='vanilla::reset_agent'
 alias arou='vanilla::agent_roulette'
 
 alias ls='ls --color=auto'
-if [ $(which rg &> /dev/null) ]; then
+if [ -x bat ]; then
+    alias cat='bat'
+    alias c='bat'
+    alias b='bat'
+else
+    alias c='cat'
+    alias b='cat'
+fi
+
+if [ -x rg ]; then
     alias grep='rg'
 else
     alias grep='grep --color=auto'
 fi
 
-if [ $(which doas &> /dev/null) ]; then
+if [ -x doas ]; then
     alias sudo='doas'
 fi
 
@@ -37,7 +56,6 @@ alias f='fg'
 # alias fdi='vanilla::find -d -i'
 # alias ff='vanilla::find'
 # alias ffi='vanilla::find -i'
-alias fk='sudo !!'
 
 alias g='git'
 alias gc='git -C'
@@ -55,11 +73,11 @@ alias p='python3'
 
 alias so='vanilla::source'
 
-if [ $(which zstd &> /dev/null) ]; then
+if [ -x zstd ]; then
     alias rsync='rsync --zc=zstd'
 fi
 
-if $(which tree &> /dev/null); then
+if [ -x tree ]; then
     # Get the major version number
     if [ $(tree --version | grep -Po 'v\K\d') -lt 2 ]; then
         alias t='tree'
@@ -71,7 +89,7 @@ else
 fi
 
 alias show='swayimg'
-alias today='date +%Y-%m-%d'
+alias today='date +%F'
 
 alias r='rm'
 alias rf='rm -rf'
@@ -86,8 +104,9 @@ alias psall='podman ps -qa|xargs podman start'
 
 alias nwl='networkctl list'
 alias nws='networkctl status'
-alias nwr='networkctl reload'
-alias nwd='networkctl down'
-alias nwu='networkctl up'
-alias nwrs='systemctl restart systemd-networkd'
+alias nwr='sudo networkctl reload'
+alias nwrc='sudo networkctl reconfigure'
+alias nwd='sudo networkctl down'
+alias nwu='sudo networkctl up'
+alias nwrs='sudo systemctl restart systemd-networkd'
 
