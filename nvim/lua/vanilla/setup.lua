@@ -1,3 +1,4 @@
+vim.env.PATH = vim.env.HOME .. "/.local/bin" .. ":" .. vim.env.PATH
 -- set leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

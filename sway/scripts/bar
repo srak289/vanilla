@@ -1,5 +1,17 @@
 #!/bin/sh
+p() {
+    echo "scale=4; $1 / $2 * 100" | bc | grep -Po '\d{1,3}\.\d{2}'
+}
 SCRIPTS=$(realpath $(dirname ${0}))
 POWER=$(${SCRIPTS}/show-power)
 DATE=$(date +'%Y-%m-%d %R')
-echo "${POWER} | ${DATE}"
+CPU=$(cat /proc/loadavg | cut -d ' ' -f 1)
+MEMT=$(grep -Po 'MemTotal:\s+\K\d+' /proc/meminfo)
+MEMF=$(grep -Po 'MemAvailable:\s+\K\d+' /proc/meminfo)
+MEMF=$(expr $MEMT - $MEMF)
+MEMU=$(p $MEMF $MEMT)
+SWAPT=$(grep -Po 'SwapTotal:\s+\K\d+' /proc/meminfo)
+SWAPF=$(grep -Po 'SwapFree:\s+\K\d+' /proc/meminfo)
+SWAPF=$(expr $SWAPT - $SWAPF)
+SWAPU=$(p $SWAPF $SWAPT)
+echo "SWAP: ${SWAPU:-0}% | MEM: ${MEMU}% | CPU: ${CPU}% | ${POWER} | ${DATE}"

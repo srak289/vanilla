@@ -7,8 +7,12 @@ return {
   opts = {
     ensure_installed = {
       "c",
-      "python",
       "lua",
+      "markdown",
+      "markdown_inline",
+      "python",
+      "rust",
+      "yaml",
     },
     highlight = {
       enable = true,

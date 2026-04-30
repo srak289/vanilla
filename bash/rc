@@ -87,6 +87,10 @@ if [ -z "${SSH_AUTH_SOCK:-}" ]; then
     fi
 fi
 
+if [ -x ${HOME}/.local/bin/zk ]; then
+    export ZK_NOTEBOOK_DIR=${HOME}/._zk
+fi
+
 if [ -f "${HOME}/.cargo/env" ]; then
     source "${HOME}/.cargo/env"
 fi
