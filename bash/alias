@@ -1,5 +1,10 @@
 #!/bin/bash
 
+tp() {
+    test -x $(which $1 2>/dev/null)
+    return $?
+}
+
 alias vim='nvim'
 alias vi='nvim'
 alias e='nvim'
@@ -27,7 +32,7 @@ alias ar='vanilla::reset_agent'
 alias arou='vanilla::agent_roulette'
 
 alias ls='ls --color=auto'
-if [ -x bat ]; then
+if [ $(tp bat) ]; then
     alias cat='bat'
     alias c='bat'
     alias b='bat'
@@ -36,13 +41,13 @@ else
     alias b='cat'
 fi
 
-if [ -x rg ]; then
+if [ $(tp rg) ]; then
     alias grep='rg'
 else
     alias grep='grep --color=auto'
 fi
 
-if [ -x doas ]; then
+if [ $(tp doas) ]; then
     alias sudo='doas'
 fi
 
@@ -73,11 +78,11 @@ alias p='python3'
 
 alias so='vanilla::source'
 
-if [ -x zstd ]; then
+if [ $(tp zstd) ]; then
     alias rsync='rsync --zc=zstd'
 fi
 
-if [ -x tree ]; then
+if [ $(tp tree) ]; then
     # Get the major version number
     if [ $(tree --version | grep -Po 'v\K\d') -lt 2 ]; then
         alias t='tree'
