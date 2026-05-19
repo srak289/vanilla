@@ -1,8 +1,14 @@
 #!/bin/bash
 
 tp() {
-    test -x $(which $1 2>/dev/null)
-    return $?
+    CMD=$(which $1 2>/dev/null)
+    if [ $? -eq 1 ]; then
+        return 1
+    fi
+    if [ -x $CMD ]; then
+        return 0
+    fi
+    return 1
 }
 
 alias vim='nvim'
@@ -32,7 +38,7 @@ alias ar='vanilla::reset_agent'
 alias arou='vanilla::agent_roulette'
 
 alias ls='ls --color=auto'
-if [ $(tp bat) ]; then
+if tp bat; then
     alias cat='bat'
     alias c='bat'
     alias b='bat'
@@ -41,13 +47,15 @@ else
     alias b='cat'
 fi
 
-if [ $(tp rg) ]; then
+if tp rg; then
     alias grep='rg'
 else
     alias grep='grep --color=auto'
 fi
 
-if [ $(tp doas) ]; then
+declare SUDO=sudo
+if tp doas; then
+    SUDO=doas
     alias sudo='doas'
 fi
 
@@ -78,11 +86,11 @@ alias p='python3'
 
 alias so='vanilla::source'
 
-if [ $(tp zstd) ]; then
+if tp zstd; then
     alias rsync='rsync --zc=zstd'
 fi
 
-if [ $(tp tree) ]; then
+if tp tree; then
     # Get the major version number
     if [ $(tree --version | grep -Po 'v\K\d') -lt 2 ]; then
         alias t='tree'
@@ -107,11 +115,11 @@ alias pcr='podman remove'
 alias pci='vanilla::podman_shell'
 alias psall='podman ps -qa|xargs podman start'
 
-alias nwl='networkctl list'
-alias nws='networkctl status'
-alias nwr='sudo networkctl reload'
-alias nwrc='sudo networkctl reconfigure'
-alias nwd='sudo networkctl down'
-alias nwu='sudo networkctl up'
-alias nwrs='sudo systemctl restart systemd-networkd'
+alias nwl="networkctl list"
+alias nws="networkctl status"
+alias nwr="$SUDO networkctl reload"
+alias nwrc="$SUDO networkctl reconfigure"
+alias nwd="$SUDO networkctl down"
+alias nwu="$SUDO networkctl up"
+alias nwrs="$SUDO systemctl restart systemd-networkd"
 
