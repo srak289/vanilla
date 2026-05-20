@@ -34,7 +34,7 @@
   },
 
   "memory": {
-    "format": "  {used}MB"
+    "format": "💾  {used}%"
   },
 
   "tray": {
