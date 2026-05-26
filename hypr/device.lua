@@ -20,6 +20,12 @@ hl.monitor({
   scale  = 1,
 })
 
+hl.on("monitor.removed", function(m)
+	if m.name ~= "eDP-1" then
+    hl.monitor({ output = "eDP-1", disabled = false })
+	end
+end)
+
 -- PERMISSIONS
 -- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
 
