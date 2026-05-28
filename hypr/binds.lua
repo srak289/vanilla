@@ -30,6 +30,7 @@ hl.bind(mainMod .. " + SHIFT + J",  hl.dsp.window.move({ direction = "down" }))
 
 hl.bind(mainMod .. " + SHIFT + Q",  hl.dsp.window.close())
 hl.bind(mainMod .. " + CTRL + SHIFT + Q",  hl.dsp.window.kill())
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
