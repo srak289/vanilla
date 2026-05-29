@@ -5,7 +5,15 @@
 
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["network", "battery", "cpu", "memory", "tray"],
+  "modules-right": [
+    "wireplumber#sink",
+    "wireplumber#source",
+    "network",
+    "battery",
+    "cpu",
+    "memory",
+    "tray"
+  ],
 
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -15,6 +23,21 @@
   "clock": {
     "format": "{:%H:%M}",
     "tooltip-format": "{:%A, %d %B %Y}"
+  },
+
+  "wireplumber#sink": {
+      "format": "{volume}% {icon}",
+      "format-muted": "   Muted",
+      "on-click": "helvum",
+      "format-icons": ["", "", ""],
+      "scroll-step": 5
+  },
+
+  "wireplumber#source": {
+      "node-type": "Audio/Source",
+      "format": "{volume}% {icon}",
+      "format-muted": "   Muted",
+      "scroll-step": 5
   },
 
   "network": {
