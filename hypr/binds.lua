@@ -33,6 +33,7 @@ hl.bind(mainMod .. " + CTRL + SHIFT + Q",  hl.dsp.window.kill())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("loginctl lock-session"))
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("fnottctl dismiss"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
